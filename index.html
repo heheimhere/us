@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        #noButton {
+            position: absolute;
+        }
+        #iframeContainer {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center h-screen bg-gray-100">
+    <audio id="bgMusic" loop>
+        <source src="song.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="text-center">
+        <h1 class="text-3xl mb-8">Kya aap hamse pyaar karte hai? <br>Aage dekhe? </h1>
+        <button id="yesButton" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded m-2">Dekhna hi padega</button>
+        <button id="noButton" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded m-2">No, krke to batao..</button>
+        <div id="iframeContainer">
+            Scroll karte raho
+            <iframe src="journey.html" width="600" height="400" class="border rounded shadow-lg"></iframe>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const noButton = document.getElementById('noButton');
+            const yesButton = document.getElementById('yesButton');
+            const iframeContainer = document.getElementById('iframeContainer');
+            const bgMusic = document.getElementById('bgMusic');
+
+            const startTime = 102; // Change this to the desired start time in seconds
+            bgMusic.currentTime = startTime;
+            bgMusic.play();
+
+            noButton.addEventListener('mouseover', () => {
+                const x = Math.floor(Math.random() * window.innerWidth);
+                const y = Math.floor(Math.random() * window.innerHeight);
+                noButton.style.left = `${x}px`;
+                noButton.style.top = `${y}px`;
+            });
+
+            yesButton.addEventListener('click', () => {
+                iframeContainer.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>
